@@ -27,7 +27,6 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {
                 if (data == null) return;
-                loadNowPlaying();
             }
         });
     });

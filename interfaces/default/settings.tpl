@@ -155,6 +155,52 @@
                         </fieldset>
 
                         <fieldset>
+                            <legend>CouchPotato V2</legend>
+                            <div class="control-group">
+                                <label class="control-label">Enable</label>
+                                <div class="controls">
+                                    <label class="checkbox enable-module">
+                                        #if $getVar('use_cp', 'no') == "yes"
+                                        <input type="checkbox" checked="checked" value="yes" name="use_cp" />
+                                        #else
+                                        <input type="checkbox" value="yes" name="use_cp" />
+                                        #end if
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="cp_ip">IP / Host</label>
+                                <div class="controls">
+                                    <input class="span3" id="cp_ip" name="cp_ip" type="text" value="$getVar('cp_ip', '')" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="cp_username">Username</label>
+                                <div class="controls">
+                                    <input class="span3" id="cp_username" name="cp_username" type="text" value="$getVar('cp_username', '')" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="cp_password">Password</label>
+                                <div class="controls">
+                                    <input class="span3" id="cp_password" name="cp_password" type="password" value="$getVar('cp_password', '')" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="cp_port">Port</label>
+                                <div class="controls">
+                                    <input class="span1" id="cp_port" name="cp_port" type="text" value="$getVar('cp_port', '')" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="sb_apikey">API Key</label>
+                                <div class="controls">
+                                    <input class="span6" id="cp_apikey" name="cp_apikey" type="text" value="$getVar('cp_apikey', '')" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
                             <legend>XBMC</legend>
                             <div class="control-group">
                                 <label class="control-label">Enable</label>

@@ -61,6 +61,16 @@
                         </li>
                     #end if
 
+                    #if $getVar('use_cp', 'no') == "yes"
+                        #if $submenu == "couchpotato"
+                        <li class="active">
+                        #else
+                        <li>
+                            #end if
+                            <a href="/couchpotato">CouchPotato</a>
+                        </li>
+                    #end if
+
                     #if $getVar('use_xbmc', 'no') == "yes"
                         #if $submenu == "xbmc"
                         <li class="active">

@@ -26,6 +26,8 @@ from htpc.sickbeard import sbGetLogs
 from htpc.sickbeard import sbAddShow
 from htpc.sickbeard import sbGetShow
 
+from htpc.couchpotato import cpGetMovieList
+
 from htpc.xbmc import xbmcGetMovies
 from htpc.xbmc import xbmcGetThumb
 from htpc.xbmc import xbmcGetShows
@@ -87,6 +89,8 @@ class pageHandler:
                     kwargs['use_nzb'] = 'no'
                 if not kwargs.has_key('use_sb'):
                     kwargs['use_sb'] = 'no'
+                if not kwargs.has_key('use_cp'):
+                    kwargs['use_cp'] = 'no'
                 if not kwargs.has_key('use_xbmc'):
                     kwargs['use_xbmc'] = 'no'
                 if not kwargs.has_key('use_nzbmatrix'):
@@ -141,6 +145,22 @@ class pageHandler:
         template.appname = self.appname
         template.webdir = self.webdir
         template.submenu = 'sickbeard'
+
+        return template.respond()
+
+    @cherrypy.expose()
+    def couchpotato(self, **args):
+
+        # Searchlist voor template ophalen
+        searchList = htpc.settings.readSettings()
+
+        # Template vullen
+        template = Template(file=os.path.join(self.webdir, 'couchpotato.tpl'), searchList=[searchList])
+        template.jsfile = 'couchpotato.js'
+
+        template.appname = self.appname
+        template.webdir = self.webdir
+        template.submenu = 'couchpotato'
 
         return template.respond()
 
@@ -220,6 +240,10 @@ class pageHandler:
                 return sbAddShow(args.get('tvdbid'))
             if args.get('action') == 'getshow':
                 return sbGetShow(args.get('tvdbid'))
+
+        if args.get('which') == 'couchpotato':
+            if args.get('action') == 'movielist':
+                return cpGetMovieList()
 
         if args.get('which') == 'xbmc':
             if args.get('action') == 'movies':

@@ -209,7 +209,10 @@ function playItem(item) {
     $.ajax({
         url: 'json/?which=xbmc&action=play&item=' + item,
         type: 'get',
-        dataType: 'json'
+        dataType: 'json',
+        success: function (data) {
+            loadNowPlaying();
+        }
     });
 }
 
@@ -257,7 +260,8 @@ function loadNowPlaying() {
 
                 $('#nowplaying').css({
                     'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.fanart) + '&w=1150&h=640&o=10) top center',
-                    'background-size' : '100%;'
+                    'background-size' : '100%;',
+                    'background-position' : '50% 20%'
                 });
             }
 
