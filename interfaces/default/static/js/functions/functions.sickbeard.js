@@ -117,7 +117,7 @@ function loadNextAired() {
     });
 }
 
-function loadHistory(limit) {
+function loadSbHistory(limit) {
 
     $.ajax({
         url: '/json/?which=sickbeard&action=history&limit=' + limit,

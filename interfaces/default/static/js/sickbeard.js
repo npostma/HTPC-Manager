@@ -1,7 +1,7 @@
 $(document).ready(function () {
     loadShows();
     loadNextAired();
-    loadHistory(25);
+    loadSbHistory(25);
     loadLogs();
 
     $('#add_show_button').click(function () {

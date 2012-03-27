@@ -2,6 +2,7 @@ $(document).ready(function () {
     loadRecentMovies();
     loadRecentTVshows();
     loadNextAired();
+    loadWantedMovies();
     loadRecentAlbums();
     loadInfo();
 });
@@ -171,6 +172,34 @@ function loadRecentAlbums () {
                 $('#album-table-body').append(row);
 
             });
+        }
+    });
+}
+
+function loadWantedMovies() {
+    $.ajax({
+        url: '/json/?which=couchpotato&action=movielist',
+        type: 'get',
+        dataType: 'json',
+        success: function (result) {
+
+            if (result == null) {
+                var row = $('<tr>')
+                row.append($('<td>').html('No wanted movies found').attr('colspan', '2'));
+                $('#wantedmovies_table_body').append(row);
+                return false;
+            }
+
+            $.each(result.movies, function(i, item) {
+
+                var row = $('<tr>');
+                row.append($('<td>').html(item.library.info.original_title));
+                row.append($('<td>').html(item.library.year));
+
+                $('#wantedmovies_table_body').append(row);
+
+            });
+
         }
     });
 }

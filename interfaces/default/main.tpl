@@ -67,7 +67,7 @@
         <div class="row-fluid">
 
             #if $getVar('use_sb', 'no') == "yes"
-            <div class="span6">
+            <div class="span4">
                 <h3>Next aired</h3>
                 <table class="table table-striped table-main">
                     <thead>
@@ -85,8 +85,25 @@
             </div>
             #end if
 
+            #if $getVar('use_cp', 'no') == "yes"
+            <div class="span4">
+                <h3>Wanted movies</h3>
+                <table class="table table-striped table-main">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                    </tr>
+                    </thead>
+                    <tbody id="wantedmovies_table_body">
+
+                    </tbody>
+                </table>
+            </div>
+            #end if
+
             #if $getVar('use_nzb', 'no') == "yes"
-            <div class="span6">
+            <div class="span4">
                 <h3>Info</h3>
                 <h6>HDD Info</h6>
                 <div id="hdd-info"></div>
