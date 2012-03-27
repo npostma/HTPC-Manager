@@ -259,7 +259,7 @@ function loadNowPlaying() {
                 nowPlayingThumb = data.itemInfo.item.thumbnail;
 
                 $('#nowplaying').css({
-                    'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.fanart) + '&w=1150&h=640&o=10) top center',
+                    'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.fanart) + '&w=1150&h=640&o=80) top center',
                     'background-size' : '100%;',
                     'background-position' : '50% 20%'
                 });
