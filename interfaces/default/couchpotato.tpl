@@ -6,7 +6,7 @@
 
         <div class="page-header page-title">
             <h1>
-                CouchPotato
+                CouchPotato v2
             </h1>
         </div>
 
@@ -14,11 +14,6 @@
 
 
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Movie</th>
-            </tr>
-            </thead>
             <tbody id="movies_table_body">
 
             </tbody>
