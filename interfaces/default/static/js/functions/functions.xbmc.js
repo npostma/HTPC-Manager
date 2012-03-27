@@ -21,7 +21,10 @@ function loadMovies() {
                 movieAnchor.click(function () {
 
                     // Maak inhoud van modal
-                    var modalMoviePicture = moviePicture.clone();
+                    var modalMoviePicture = $('<img>');
+                    modalMoviePicture.css('height', '300px');
+                    modalMoviePicture.css('width', '200px');
+                    modalMoviePicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.thumbnail) + '&w=200&h=300');
 
                     var modalMovieAnchor = $('<div>');
                     modalMovieAnchor.addClass('thumbnail');
@@ -39,7 +42,7 @@ function loadMovies() {
                     row.append(modalPlot)
 
                     var table = $('<table>');
-                    table.addClass('table table-bordered');
+                    table.addClass('table table-movie');
                     table.append(row);
 
 
@@ -51,10 +54,10 @@ function loadMovies() {
                     })
 
                     // Achtergrondje maken
-                    table.parent().css({
-                        'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=600&h=400&o=10) top center',
-                        'background-size' : '100%;'
-                    });
+//                    table.parent().css({
+//                        'background' : '#000000 url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=600&h=400) top center',
+//                        'background-size' : '100%;'
+//                    });
                 });
 
                 var movieItem = $('<li>');
@@ -211,7 +214,7 @@ function playItem(item) {
         type: 'get',
         dataType: 'json',
         success: function (data) {
-            loadNowPlaying();
+            // nothing
         }
     });
 }
@@ -224,7 +227,9 @@ function loadNowPlaying() {
         type: 'get',
         dataType: 'json',
         complete: function() {
-            loadNowPlaying();
+            setTimeout(function () {
+                loadNowPlaying();
+            }, 150);
         },
         success: function(data) {
 
@@ -258,11 +263,11 @@ function loadNowPlaying() {
 
                 nowPlayingThumb = data.itemInfo.item.thumbnail;
 
-                $('#nowplaying').css({
-                    'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.fanart) + '&w=1150&h=640&o=80) top center',
-                    'background-size' : '100%;',
-                    'background-position' : '50% 20%'
-                });
+//                $('#nowplaying').css({
+//                    'background' : 'url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.fanart) + '&w=1150&h=640&o=80) top center',
+//                    'background-size' : '100%;',
+//                    'background-position' : '50% 20%'
+//                });
             }
 
             // Play knop

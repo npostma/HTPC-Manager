@@ -47,7 +47,34 @@ body {
     -moz-box-shadow: none;
     box-shadow: none;
 }
-
 .table-main {
     font-size: 12px;
+}
+
+.table-movie {
+    margin-bottom: 0;
+}
+
+.table-movie tr td,
+.table-movie tr th {
+    border: 0;
+}
+
+.table-movie tr:hover td,
+.table-movie tr:hover th {
+    background: none !important;
+}
+
+.table-now-playing {
+    margin-bottom: 0;
+}
+
+.table-now-playing tr td,
+.table-now-playing tr th {
+    border: 0;
+}
+
+.table-now-playing tr:hover td,
+.table-now-playing tr:hover th {
+    background: none !important;
 }
