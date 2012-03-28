@@ -31,6 +31,8 @@ function loadMovies() {
                     modalMovieAnchor.append(modalMoviePicture);
 
                     var modalMoviePoster = $('<td>');
+                    modalMoviePoster.css('height', '300px');
+                    modalMoviePoster.css('width', '200px');
                     modalMoviePoster.append(modalMovieAnchor);
 
                     var modalPlot = $('<td>');
@@ -246,18 +248,23 @@ function loadNowPlaying() {
                 var thumbnail = $('<img>');
                 thumbnail.attr('alt', data.itemInfo.item.label);
 
+                var thumbContainer = $('#nowplaying .thumbnail');
+
                 if (data.itemInfo.item.type == 'episode') {
                     thumbnail.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.thumbnail) + '&w=150&h=75');
                     thumbnail.css('height', '75px');
                     thumbnail.css('width', '150px');
+                    thumbContainer.css('height', '75px');
+                    thumbContainer.css('width', '150px');
                 }
                 if (data.itemInfo.item.type == 'movie') {
                     thumbnail.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(data.itemInfo.item.thumbnail) + '&w=100&h=150');
                     thumbnail.css('height', '150px');
                     thumbnail.css('width', '100px');
+                    thumbContainer.css('height', '150px');
+                    thumbContainer.css('width', '100px');
                 }
 
-                var thumbContainer = $('#nowplaying .thumbnail');
                 thumbContainer.html(thumbnail);
 
                 nowPlayingThumb = data.itemInfo.item.thumbnail;
