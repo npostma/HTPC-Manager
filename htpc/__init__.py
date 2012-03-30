@@ -177,7 +177,6 @@ class pageHandler:
         template.appname = self.appname
         template.webdir = self.webdir
         template.submenu = 'xbmc'
-        template.page_can_search = 'yes'
 
         return template.respond()
 
