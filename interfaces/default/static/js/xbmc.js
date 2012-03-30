@@ -48,4 +48,12 @@ $(document).ready(function () {
         sendNotification($('#send_notification_text').val());
     });
 
+    $('#btn-clean-lib').click(function () {
+        xbmcClean();
+    });
+
+    $('#btn-scan-lib').click(function () {
+        xbmcScan();
+    });
+
 });

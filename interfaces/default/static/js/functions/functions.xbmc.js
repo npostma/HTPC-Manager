@@ -408,7 +408,29 @@ function sendNotification(text) {
         type: 'get',
         dataType: 'json',
         success: function(data) {
-            console.log(data);
+
+        }
+    });
+}
+
+function xbmcClean() {
+    $.ajax({
+        url: 'json/?which=xbmc&action=clean',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+
+        }
+    });
+}
+
+function xbmcScan() {
+    $.ajax({
+        url: 'json/?which=xbmc&action=scan',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+
         }
     });
 }

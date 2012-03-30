@@ -39,6 +39,8 @@ from htpc.xbmc import xbmcNotify
 from htpc.xbmc import xbmcGetRecentMovies
 from htpc.xbmc import xbmcGetRecentShows
 from htpc.xbmc import xbmcGetRecentAlbums
+from htpc.xbmc import xbmcClean
+from htpc.xbmc import xbmcScan
 
 from htpc.nzbsearch import searchNZBs
 
@@ -283,6 +285,10 @@ class pageHandler:
                 return xbmcGetRecentShows()
             if  args.get('action') == 'recentalbums':
                 return xbmcGetRecentAlbums()
+            if  args.get('action') == 'clean':
+                return xbmcClean()
+            if  args.get('action') == 'scan':
+                return xbmcScan()
 
         if args.get('which') == 'nzbsearch':
             if args.has_key('query'):

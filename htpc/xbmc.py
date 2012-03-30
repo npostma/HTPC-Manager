@@ -169,3 +169,13 @@ def xbmcGetRecentAlbums():
     server = Server(xbmcMakeUrl() + '/jsonrpc')
     data = server.AudioLibrary.GetRecentlyAddedAlbums(properties=['artist', 'albumlabel', 'year', 'description', 'thumbnail'])
     return dumps(data)
+
+def xbmcClean():
+    server = Server(xbmcMakeUrl() + '/jsonrpc')
+    data = server.VideoLibrary.Clean()
+    return dumps(data)
+
+def xbmcScan():
+    server = Server(xbmcMakeUrl() + '/jsonrpc')
+    data = server.VideoLibrary.Scan()
+    return dumps(data)

@@ -83,6 +83,13 @@
                                 <button class="btn" type="button" id="send_notification_button"><i class="icon-envelope"></i> Send</button>
                             </div>
                         </fieldset>
+                        <fieldset>
+                            <legend>Actions</legend>
+                            <div class="control-group">
+                                <a class="btn" id="btn-scan-lib" type="text">Update library</a>
+                                 <a class="btn" id="btn-clean-lib" type="text">Clean library</a>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
 
