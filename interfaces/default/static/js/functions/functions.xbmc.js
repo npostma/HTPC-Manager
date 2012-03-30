@@ -184,7 +184,11 @@ function loadXbmcShows(options) {
                 var showItem = $('<li>');
                 showItem.addClass('show-item');
                 showItem.append(showAnchor);
-                showItem.append($('<h6>').addClass('show-title').html(shortenText(show.title, 15)));
+                if ($('#show-grid').hasClass('banners')) {
+                    showItem.append($('<h6>').addClass('show-title').html(show.title));
+                } else {
+                    showItem.append($('<h6>').addClass('show-title').html(shortenText(show.title, 15)));
+                }
 
                 $('#show-grid').append(showItem);
 
