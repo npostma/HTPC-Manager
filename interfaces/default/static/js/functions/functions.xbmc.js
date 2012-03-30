@@ -45,13 +45,6 @@ function loadMovies(options) {
 
             $.each(data.movies, function (i, movie) {
 
-                if (sendData.search != '') {
-                    console.log(findInString(sendData.search, movie.title));
-                    if (!findInString(sendData.search, movie.title)) {
-                        return true;
-                    }
-                }
-
                 var moviePicture = $('<img>');
                 moviePicture.css('height', '150px');
                 moviePicture.css('width', '100px');
