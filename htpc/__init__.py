@@ -260,7 +260,13 @@ class pageHandler:
                     opacity = args.get('o')
                 return xbmcGetThumb(args.get('thumb'), args.get('w'), args.get('h'), opacity)
             if args.get('action') == 'shows':
-                return xbmcGetShows()
+                limitstart = 0;
+                if (args.has_key('start')):
+                    limitstart = args.get('start')
+                limitend = 0;
+                if (args.has_key('end')):
+                    limitend = args.get('end')
+                return xbmcGetShows(limitstart, limitend)
             if args.get('action') == 'play':
                 return xbmcPlayItem(args.get('item'))
             if args.get('action') == 'getshow':

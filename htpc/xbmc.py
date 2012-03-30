@@ -81,9 +81,9 @@ def xbmcGetMovies(limitstart=0,limitend=0):
     data = server.VideoLibrary.GetMovies(properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'], limits={'start' : int(limitstart), 'end' : int(limitend)})
     return dumps(data)
 
-def xbmcGetShows():
+def xbmcGetShows(limitstart=0,limitend=0):
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetTVShows(properties=['title', 'year', 'plot', 'thumbnail'])
+    data = server.VideoLibrary.GetTVShows(properties=['title', 'year', 'plot', 'thumbnail'], limits={'start' : int(limitstart), 'end' : int(limitend)})
     return dumps(data)
 
 def xbmcGetShow(id):

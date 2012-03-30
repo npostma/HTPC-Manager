@@ -113,12 +113,51 @@ function loadMovies(options) {
     });
 }
 
-function loadXbmcShows() {
-    $.ajax({
+// films inladen
+var showSteps = 56;
+var lastShowLoaded = 0;
+var allShowsLoaded = false;
+var showsLoading = false;
+var showRequest = null;
+function loadXbmcShows(options) {
+
+    if (showRequest != null) {
+        showRequest.abort();
+        showsLoading = false;
+    }
+
+    var sendData = {
+        start: lastShowLoaded,
+        end: (lastShowLoaded + showSteps),
+        search: ''
+    };
+    $.extend(sendData, options);
+
+    if (allShowsLoaded) {
+        return true;
+    }
+    if (showsLoading) {
+        return true;
+    }
+
+    showRequest = $.ajax({
         url: 'json/?which=xbmc&action=shows',
         type: 'get',
         dataType: 'json',
+        data: sendData,
+        beforeSend: function() {
+            $('#show-loader').show();
+            showsLoading = true;
+        },
         success: function (data) {
+
+            lastShowLoaded += showSteps;
+
+            if (data == null) return false;
+
+            if (data.limits.end == data.limits.total) {
+                allShowsLoaded = true;
+            }
 
             if (data == null) return false;
             $.each(data.tvshows, function (i, show) {
@@ -146,6 +185,9 @@ function loadXbmcShows() {
                 showItem.append(showAnchor);
 
                 $('#show-grid').append(showItem);
+
+                $('#show-loader').hide();
+                showsLoading = false;
 
             });
         }

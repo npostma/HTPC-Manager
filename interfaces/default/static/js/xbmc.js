@@ -3,13 +3,18 @@
 $(document).ready(function () {
 
     loadMovies();
+    loadXbmcShows();
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() == $(document).height()) {
-            loadMovies();
+            if ($('#shows').is(':visible')) {
+                loadXbmcShows();
+            }
+            if ($('#movies').is(':visible')) {
+                loadMovies();
+            }
         }
     });
 
-    loadXbmcShows();
     loadNowPlaying();
 
     // Button setten

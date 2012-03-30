@@ -64,6 +64,7 @@
                     #else
                     <ul id="show-grid" class="thumbnails"></ul>
                     #end if
+                    <div class="gif-loader" id="show-loader"><img src="img/loader.gif" alt="loader" /></div>
                     <div id="show-details" style="display:none;">
                         <div class="well">
                             <a class="btn" id="back-to-shows" href="#">Back</a>
