@@ -6,45 +6,11 @@ import htpc.settings
 from Cheetah.Template import Template
 
 from htpc.updater import *
-
-from htpc.sabnzbd import sabnzbdGetHistory
-from htpc.sabnzbd import sabnzbdGetStatus
-from htpc.sabnzbd import sabnzbdGetWarnings
-from htpc.sabnzbd import sabnzbdTogglePause
-from htpc.sabnzbd import sabnzbdAddNzbFromUrl
-from htpc.sabnzbd import sabnzbdDeleteNzb
-from htpc.sabnzbd import sabnzbdDeleteHistory
-from htpc.sabnzbd import sabnzbdRetry
-from htpc.sabnzbd import sabnzbdGetCategories
-from htpc.sabnzbd import sabnzbdChangeCategory
-from htpc.sabnzbd import sabnzbdSetSpeed
-
-from htpc.sickbeard import sbGetShowList
-from htpc.sickbeard import sbGetPoster
-from htpc.sickbeard import sbGetNextAired
-from htpc.sickbeard import sbGetHistory
-from htpc.sickbeard import sbSearchShow
-from htpc.sickbeard import sbGetLogs
-from htpc.sickbeard import sbAddShow
-from htpc.sickbeard import sbGetShow
-
-from htpc.couchpotato import cpGetMovieList
-
-from htpc.xbmc import xbmcGetMovies
-from htpc.xbmc import xbmcGetThumb
-from htpc.xbmc import xbmcGetShows
-from htpc.xbmc import xbmcPlayItem
-from htpc.xbmc import xbmcGetShow
-from htpc.xbmc import xbmcNowPlaying
-from htpc.xbmc import xbmcControlPlayer
-from htpc.xbmc import xbmcNotify
-from htpc.xbmc import xbmcGetRecentMovies
-from htpc.xbmc import xbmcGetRecentShows
-from htpc.xbmc import xbmcGetRecentAlbums
-from htpc.xbmc import xbmcClean
-from htpc.xbmc import xbmcScan
-
-from htpc.nzbsearch import searchNZBs
+from htpc.sabnzbd import *
+from htpc.sickbeard import *
+from htpc.couchpotato import *
+from htpc.xbmc import *
+from htpc.nzbsearch import *
 
 # Standaard variabelen
 host = "0.0.0.0"
