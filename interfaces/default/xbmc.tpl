@@ -53,6 +53,21 @@
             <div class="tab-content">
 
                 <div class="active tab-pane" id="movies">
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Added <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Name</a></li>
+                                <li><a href="#">Year</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Ascending <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Descending</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <ul id="movie-grid" class="thumbnails"></ul>
                     <div class="gif-loader" id="movie-loader"><img src="img/loader.gif" alt="loader" /></div>
                 </div>

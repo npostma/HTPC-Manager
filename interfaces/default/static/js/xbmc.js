@@ -5,12 +5,13 @@ $(document).ready(function () {
     loadMovies();
     loadXbmcShows();
     $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-            if ($('#shows').is(':visible')) {
-                loadXbmcShows();
-            }
+        if($(window).scrollTop() + $(window).height() >= $(document).height() - 10) {
+
             if ($('#movies').is(':visible')) {
                 loadMovies();
+            }
+            if ($('#shows').is(':visible')) {
+                loadXbmcShows();
             }
         }
     });
