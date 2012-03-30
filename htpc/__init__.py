@@ -177,6 +177,7 @@ class pageHandler:
         template.appname = self.appname
         template.webdir = self.webdir
         template.submenu = 'xbmc'
+        template.page_can_search = 'yes'
 
         return template.respond()
 
@@ -247,7 +248,13 @@ class pageHandler:
 
         if args.get('which') == 'xbmc':
             if args.get('action') == 'movies':
-                return xbmcGetMovies()
+                limitstart = 0;
+                if (args.has_key('start')):
+                    limitstart = args.get('start')
+                limitend = 0;
+                if (args.has_key('end')):
+                    limitend = args.get('end')
+                return xbmcGetMovies(limitstart, limitend)
             if args.get('action') == 'thumb':
                 opacity = 100
                 if args.has_key('o'):

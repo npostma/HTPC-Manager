@@ -101,6 +101,11 @@
                     </li>
                 </ul>
             </div>
+            #if $getVar('page_can_search', 'no') == "yes"
+            <form class="navbar-search pull-right">
+                <input type="text" class="search-query" placeholder="Search">
+            </form>
+            #end if
         </div>
     </div>
 </div>

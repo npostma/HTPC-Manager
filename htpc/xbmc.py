@@ -76,9 +76,9 @@ def xbmcMakeUrl():
         url = 'http://' + config.get('xbmc_username') + ':' + config.get('xbmc_password') + '@' + config.get('xbmc_ip') + ':' + str(config.get('xbmc_port'))
         return url
 
-def xbmcGetMovies():
+def xbmcGetMovies(limitstart=0,limitend=0):
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetMovies(properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'])
+    data = server.VideoLibrary.GetMovies(properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'], limits={'start' : int(limitstart), 'end' : int(limitend)})
     return dumps(data)
 
 def xbmcGetShows():
