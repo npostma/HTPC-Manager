@@ -54,7 +54,9 @@
 
                 <div class="active tab-pane" id="movies">
                     <ul id="movie-grid" class="thumbnails"></ul>
+                    <div class="gif-loader" id="movie-loader"><img src="img/loader.gif" alt="loader" /></div>
                 </div>
+
 
                 <div id="shows" class="tab-pane">
                     #if $getVar('xbmc_show_banners', 'no') == "yes"

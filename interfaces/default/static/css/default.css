@@ -85,3 +85,8 @@ h6.movie-title {
     text-align: center;
     padding-top: 4px;
 }
+
+.gif-loader {
+    text-align: center;
+    display: none;
+}

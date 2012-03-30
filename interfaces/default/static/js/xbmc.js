@@ -1,7 +1,14 @@
+
+
 $(document).ready(function () {
 
-    // films inladen
     loadMovies();
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            loadMovies();
+        }
+    });
+
     loadXbmcShows();
     loadNowPlaying();
 

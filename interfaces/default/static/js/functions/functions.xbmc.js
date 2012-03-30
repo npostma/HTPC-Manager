@@ -1,11 +1,31 @@
+// films inladen
+var lastMovieLoaded = 0;
+var allMoviesLoaded = false;
 function loadMovies() {
+    if (allMoviesLoaded) {
+        return true;
+    }
     $.ajax({
         url: 'json/?which=xbmc&action=movies',
         type: 'get',
+        data: {
+            start: lastMovieLoaded,
+            end: (lastMovieLoaded + 56)
+        },
+        beforeSend: function() {
+            $('#movie-loader').show();
+        },
         dataType: 'json',
         success: function (data) {
 
+            lastMovieLoaded += 56;
+
             if (data == null) return false;
+
+            if ((data.limits.end + 56) >= data.limits.total) {
+                allMoviesLoaded = true;
+            }
+
             $.each(data.movies, function (i, movie) {
 
                 var moviePicture = $('<img>');
@@ -62,14 +82,12 @@ function loadMovies() {
                 });
 
                 var movieItem = $('<li>').attr('title', movie.title);
+                movieItem.attr('id', movie.title);
                 movieItem.append(movieAnchor);
                 movieItem.append($('<h6>').addClass('movie-title').html(shortenText(movie.title, 15)));
 
                 $('#movie-grid').append(movieItem);
-
-
-
-
+                $('#movie-loader').hide();
             });
         }
     });
