@@ -13,7 +13,6 @@ $(document).ready(function() {
                 return false;
             }
 
-            console.log(result);
             $.each(result.movies, function(i, item) {
 
                 var movieImage = $('<img>');
@@ -27,14 +26,26 @@ $(document).ready(function() {
                 movieThumb.css('width', '100px');
 
                 var row = $('<tr>');
-                var original_title = item.library.info.original_title;
                 row.append($('<td>').append(movieThumb));
-                row.append($('<td>').html('<h3>' + original_title + ' (' + item.library.year + ')</h3>' + item.library.plot));
+                var original_title = item.library.info.original_title;
+                var movieHtml = '<h3>' + original_title + ' (' + item.library.year + ')</h3>';
+                movieHtml += item.library.plot + '<br />';
+
+                var info = $('<td>');
+                row.append(info.html(movieHtml));
+
+                $.each(item.profile.types, function(i, item) {
+                    var profile = $('<span>');
+                    profile.addClass('label');
+                    profile.html(item.id + ' 720p');
+                    info.append(profile);
+                    info.append('&nbsp;');
+                });
+
                 row.append($('<td>').html(''));
 
                 $('#movies_table_body').append(row);
             });
-
         }
     });
 })

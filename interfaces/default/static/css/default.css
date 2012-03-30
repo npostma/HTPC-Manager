@@ -78,3 +78,10 @@ body {
 .table-now-playing tr:hover th {
     background: none !important;
 }
+
+
+h6.movie-title {
+    color: #555555;
+    text-align: center;
+    padding-top: 4px;
+}

@@ -61,8 +61,9 @@ function loadMovies() {
                     });
                 });
 
-                var movieItem = $('<li>');
+                var movieItem = $('<li>').attr('title', movie.title);
                 movieItem.append(movieAnchor);
+                movieItem.append($('<h6>').addClass('movie-title').html(shortenText(movie.title, 15)));
 
                 $('#movie-grid').append(movieItem);
 
@@ -229,7 +230,7 @@ function loadNowPlaying() {
         dataType: 'json',
         complete: function() {
             setTimeout(function () {
-                loadNowPlaying();
+                //loadNowPlaying();
             }, 150);
         },
         success: function(data) {
