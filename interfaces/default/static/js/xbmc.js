@@ -43,4 +43,11 @@ $(document).ready(function () {
         sendNotification($('#send_notification_text').val());
     });
 
+    // Search
+    $('#search-query').keyup(function () {
+        loadMovies({
+            search : $(this).val()
+        });
+    });
+
 });

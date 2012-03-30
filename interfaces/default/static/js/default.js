@@ -106,3 +106,13 @@ function pad(number, length) {
     return str;
 }
 
+//
+function findInString(key, string) {
+    string = string.toUpperCase();
+    var match = string.indexOf(key.toUpperCase());
+    if (match != -1){
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -1,19 +1,36 @@
 // films inladen
 var lastMovieLoaded = 0;
 var allMoviesLoaded = false;
-function loadMovies() {
+var moviesLoading = false;
+var movieRequest = null;
+function loadMovies(options) {
+
+    if (movieRequest != null) {
+        movieRequest.abort();
+        moviesLoading = false;
+    }
+
+    var sendData = {
+        start: lastMovieLoaded,
+        end: (lastMovieLoaded + 56),
+        search: ''
+    };
+    $.extend(sendData, options);
+
     if (allMoviesLoaded) {
         return true;
     }
-    $.ajax({
+    if (moviesLoading) {
+        return true;
+    }
+
+    movieRequest = $.ajax({
         url: 'json/?which=xbmc&action=movies',
         type: 'get',
-        data: {
-            start: lastMovieLoaded,
-            end: (lastMovieLoaded + 56)
-        },
+        data: sendData,
         beforeSend: function() {
             $('#movie-loader').show();
+            moviesLoading = true;
         },
         dataType: 'json',
         success: function (data) {
@@ -22,11 +39,18 @@ function loadMovies() {
 
             if (data == null) return false;
 
-            if ((data.limits.end + 56) >= data.limits.total) {
+            if (data.limits.end == data.limits.total) {
                 allMoviesLoaded = true;
             }
 
             $.each(data.movies, function (i, movie) {
+
+                if (sendData.search != '') {
+                    console.log(findInString(sendData.search, movie.title));
+                    if (!findInString(sendData.search, movie.title)) {
+                        return true;
+                    }
+                }
 
                 var moviePicture = $('<img>');
                 moviePicture.css('height', '150px');
@@ -88,6 +112,9 @@ function loadMovies() {
 
                 $('#movie-grid').append(movieItem);
                 $('#movie-loader').hide();
+
+                moviesLoading = false;
+
             });
         }
     });
