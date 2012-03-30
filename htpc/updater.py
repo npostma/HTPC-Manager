@@ -3,7 +3,7 @@
 # Every 24 hours call CheckForUpdates()
 # 
 #
-
+import htpc
 from github import github
 import urllib2
 import zipfile, tarfile
@@ -17,21 +17,18 @@ Repo = "HTPC-Manager"
 Branch = "master"
 GitHubURL = "https://github.com/%s/%s/tarball/%s" % (Owner, Repo, Branch)
 
-BaseUrl = os.getcwd()
-
 def GetHashFromFile():
-	
-    if not os.path.exists(BaseUrl + '\\' + 'Version.txt'):
-    os.makedirs(BaseUrl + '\\' + 'Version.txt')
     
-	VersionFile = open(BaseUrl + '\\' + 'Version.txt','r')
-	LocalHash = VersionFile.read()
-	VersionFile.close()
-	return LocalHash
+    File = open(os.path.join(htpc.root, 'Version.txt'), 'w')
+    File.close()
+    VersionFile = open(os.path.join(htpc.root, 'Version.txt'), 'r')
+    LocalHash = VersionFile.read()
+    VersionFile.close()
+    return LocalHash
 
 def WriteHashToFile(RemoteHash):
 	
-    VersionFile = open(BaseUrl + '\\' + 'Version.txt', 'w')
+    VersionFile = open(os.path.join(htpc.root, 'Version.txt'), 'w')
     VersionFile.write(RemoteHash)
     VersionFile.close()
 
@@ -63,22 +60,16 @@ def DownloadNewVersion():
     
     # Extract to temp folder
     tar = tarfile.open('%s.tar.gz' % Repo)
-    tar.extractall(BaseUrl + '/%s-update' % Repo)
+    tar.extractall(os.path.join(htpc.root, '%s-update' % Repo))
     tar.close()
 
     # Delete .tar.gz
     os.remove("%s.tar.gz" % Repo)
 
     # Overwrite old files with new ones
-    root_src_dir = BaseUrl + "/%s-update/%s-%s-%s" % (Repo, Owner, Repo, GetHashFromGitHub()[0])
-    root_dst_dir = BaseUrl
+    root_src_dir = os.path.join(htpc.root, "%s-update/%s-%s-%s") % (Repo, Owner, Repo, GetHashFromGitHub()[0])
+    root_dst_dir = htpc.root
     
-    os.remove ("%s/PIL/_imaging.pyd" % BaseUrl)
-    os.remove ("%s/PIL/_imagingcms.pyd" % BaseUrl)
-    os.remove ("%s/PIL/_imagingft.pyd" % BaseUrl)
-    os.remove ("%s/PIL/_imagingmath.pyd" % BaseUrl)
-    os.remove ("%s/PIL/_imagingtk.pyd" % BaseUrl)
-
     for src_dir, dirs, files in os.walk(root_src_dir):
         dst_dir = src_dir.replace(root_src_dir, root_dst_dir)
         if not os.path.exists(dst_dir):
@@ -91,7 +82,7 @@ def DownloadNewVersion():
             shutil.move(src_file, dst_dir)
     
     try:
-        os.remove(BaseUrl + "/%s-update" % Repo)
+        os.remove(os.path.join(htpc.root, "%s-update" % Repo))
     except Exception:
         pass
             
