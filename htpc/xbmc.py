@@ -141,7 +141,12 @@ def xbmcNotify(text):
     text = urllib2.unquote(text)
     config = readSettings()
     command = {'command': 'ExecBuiltIn', 'parameter': 'Notification(\'HTPC Manager\', \'' + text + '\')' }
-    url = 'http://' + config.get('xbmc_ip') + ':' + str(config.get('xbmc_port')) + '/xbmcCmds/xbmcHttp/?' + urllib.urlencode(command)
+    for key in command:
+        if type(command[key]) == unicode:
+            command[key] = command[key].encode('utf-8')
+
+    enc_command = urllib.urlencode(command)
+    url = 'http://' + config.get('xbmc_ip') + ':' + str(config.get('xbmc_port')) + '/xbmcCmds/xbmcHttp/?' + enc_command
 
     request = urllib2.Request(url)
     base64string = base64.encodestring('%s:%s' % (config.get('xbmc_username'), config.get('xbmc_password'))).replace('\n', '')
