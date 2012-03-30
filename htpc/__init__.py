@@ -287,3 +287,10 @@ class pageHandler:
         if args.get('which') == 'nzbsearch':
             if args.has_key('query'):
                 return searchNZBs(args.get('query'))
+                
+    @cherrypy.expose()    
+    def update(self):
+        cherrypy.engine.exit()
+        CheckForUpdates()
+        cherrypy.server.start()
+        raise cherrypy.HTTPRedirect("/")
