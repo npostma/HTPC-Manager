@@ -5,6 +5,8 @@ import htpc.settings
 
 from Cheetah.Template import Template
 
+from htpc.updater import *
+
 from htpc.sabnzbd import sabnzbdGetHistory
 from htpc.sabnzbd import sabnzbdGetStatus
 from htpc.sabnzbd import sabnzbdGetWarnings
