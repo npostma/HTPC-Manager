@@ -80,7 +80,7 @@ body {
 }
 
 
-h6.movie-title {
+h6.movie-title, h6.show-title {
     color: #555555;
     text-align: center;
     padding-top: 4px;

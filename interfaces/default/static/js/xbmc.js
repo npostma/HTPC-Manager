@@ -15,6 +15,15 @@ $(document).ready(function () {
         }
     });
 
+    $('.search-query').keyup(function () {
+        if ($('#shows').is(':visible')) {
+            filterShows($(this).val());
+        }
+        if ($('#movies').is(':visible')) {
+            filterMovies($(this).val());
+        }
+    });
+
     loadNowPlaying();
 
     // Button setten

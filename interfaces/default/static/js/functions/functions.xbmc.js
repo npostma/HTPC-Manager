@@ -182,7 +182,9 @@ function loadXbmcShows(options) {
                 });
 
                 var showItem = $('<li>');
+                showItem.addClass('show-item');
                 showItem.append(showAnchor);
+                showItem.append($('<h6>').addClass('show-title').html(shortenText(show.title, 15)));
 
                 $('#show-grid').append(showItem);
 
@@ -431,6 +433,24 @@ function xbmcScan() {
         dataType: 'json',
         success: function(data) {
 
+        }
+    });
+}
+
+function filterShows(key) {
+    $('.show-title').parent().show();
+    $('.show-title').each(function (i, item) {
+        if (!findInString(key, $(item).html())) {
+            $(item).parent().hide();
+        }
+    });
+}
+
+function filterMovies(key) {
+    $('.movie-title').parent().show();
+    $('.movie-title').each(function (i, item) {
+        if (!findInString(key, $(item).html())) {
+            $(item).parent().hide();
         }
     });
 }
