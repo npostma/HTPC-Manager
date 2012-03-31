@@ -8,7 +8,10 @@ $(document).ready(function () {
         if($(window).scrollTop() + $(window).height() >= $(document).height() - 10) {
 
             if ($('#movies').is(':visible')) {
-                loadMovies();
+                loadMovies({
+                    sortorder: $('.active-sortorder').attr('data-sortorder'),
+                    sortmethod: $('.active-sortmethod').attr('data-sortmethod')
+                });
             }
             if ($('#shows').is(':visible')) {
                 loadXbmcShows();
