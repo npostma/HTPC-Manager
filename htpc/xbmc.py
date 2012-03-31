@@ -59,7 +59,10 @@ def xbmcGetThumb(thumb, thumbWidth, thumbHeight, thumbOpacity):
         newimage.save(thumbOnDisk + '_' + thumbWidth + '_' + thumbHeight + '.png')
 
         # Oude weg gooien
-        os.unlink(thumbOnDisk)
+        try:
+            os.unlink(thumbOnDisk)
+        except:
+            pass
 
     # Plaatje weer uitlezen
     f = open(thumbOnDisk + '_' + thumbWidth + '_' + thumbHeight + '.png', 'rb')
