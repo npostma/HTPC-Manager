@@ -51,17 +51,17 @@ body {
     font-size: 12px;
 }
 
-.table-movie {
+.table-modal {
     margin-bottom: 0;
 }
 
-.table-movie tr td,
-.table-movie tr th {
+.table-modal tr td,
+.table-modal tr th {
     border: 0;
 }
 
-.table-movie tr:hover td,
-.table-movie tr:hover th {
+.table-modal tr:hover td,
+.table-modal tr:hover th {
     background: none !important;
 }
 

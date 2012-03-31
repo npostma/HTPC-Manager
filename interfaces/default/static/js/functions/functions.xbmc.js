@@ -58,46 +58,7 @@ function loadMovies(options) {
                 movieAnchor.append(moviePicture);
 
                 movieAnchor.click(function () {
-
-                    // Maak inhoud van modal
-                    var modalMoviePicture = $('<img>');
-                    modalMoviePicture.css('height', '300px');
-                    modalMoviePicture.css('width', '200px');
-                    modalMoviePicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.thumbnail) + '&w=200&h=300');
-
-                    var modalMovieAnchor = $('<div>');
-                    modalMovieAnchor.addClass('thumbnail');
-                    modalMovieAnchor.append(modalMoviePicture);
-
-                    var modalMoviePoster = $('<td>');
-                    modalMoviePoster.css('height', '300px');
-                    modalMoviePoster.css('width', '200px');
-                    modalMoviePoster.append(modalMovieAnchor);
-
-                    var modalPlot = $('<td>');
-                    modalPlot.html(movie.plot + '<h6><br />' + movie.studio + '</h6>');
-
-                    var row = $('<tr>');
-                    row.append(modalMoviePoster);
-                    row.append(modalPlot)
-
-                    var table = $('<table>');
-                    table.addClass('table table-movie');
-                    table.append(row);
-
-
-                    showModal(movieAnchor, movie.title + ' (' + movie.year + ')',  table, {
-                        'Play' : function () {
-                            playItem(movie.file);
-                            hideModal();
-                        }
-                    })
-
-                    // Achtergrondje maken
-                    table.parent().css({
-                        'background' : '#ffffff url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=675&h=400&o=15) top center',
-                        'background-size' : '100%;'
-                    });
+                    xbmcShowMovie(movie);
                 });
 
                 var movieItem = $('<li>').attr('title', movie.title);
@@ -115,7 +76,49 @@ function loadMovies(options) {
     });
 }
 
-// films inladen
+function xbmcShowMovie(movie) {
+    // Maak inhoud van modal
+    var modalMoviePicture = $('<img>');
+    modalMoviePicture.css('height', '300px');
+    modalMoviePicture.css('width', '200px');
+    modalMoviePicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.thumbnail) + '&w=200&h=300');
+
+    var modalMovieAnchor = $('<div>');
+    modalMovieAnchor.addClass('thumbnail');
+    modalMovieAnchor.append(modalMoviePicture);
+
+    var modalMoviePoster = $('<td>');
+    modalMoviePoster.css('height', '300px');
+    modalMoviePoster.css('width', '200px');
+    modalMoviePoster.append(modalMovieAnchor);
+
+    var modalPlot = $('<td>');
+    modalPlot.html(movie.plot + '<h6><br />' + movie.studio + '</h6>');
+
+    var row = $('<tr>');
+    row.append(modalMoviePoster);
+    row.append(modalPlot)
+
+    var table = $('<table>');
+    table.addClass('table table-modal');
+    table.append(row);
+
+
+    showModal(movie.title + ' (' + movie.year + ')',  table, {
+        'Play' : function () {
+            playItem(movie.file);
+            hideModal();
+        }
+    })
+
+    // Achtergrondje maken
+    table.parent().css({
+        'background' : '#ffffff url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=675&h=400&o=15) top center',
+        'background-size' : '100%;'
+    });
+}
+
+// shows inladen
 var showSteps = 56;
 var lastShowLoaded = 0;
 var allShowsLoaded = false;
@@ -199,6 +202,48 @@ function loadXbmcShows(options) {
 
             });
         }
+    });
+}
+
+function xbmcShowEpisode(episode) {
+    // Maak inhoud van modal
+    var modalshowPicture = $('<img>');
+    modalshowPicture.css('height', '100px');
+    modalshowPicture.css('width', '200px');
+    modalshowPicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(episode.thumbnail) + '&w=200&h=100');
+
+    var modalshowAnchor = $('<div>');
+    modalshowAnchor.addClass('thumbnail');
+    modalshowAnchor.append(modalshowPicture);
+
+    var modalshowPoster = $('<td>');
+    modalshowPoster.css('height', '100px');
+    modalshowPoster.css('width', '200px');
+    modalshowPoster.append(modalshowAnchor);
+
+    var modalPlot = $('<td>');
+    modalPlot.html(episode.plot );
+
+    var row = $('<tr>');
+    row.append(modalshowPoster);
+    row.append(modalPlot)
+
+    var table = $('<table>');
+    table.addClass('table table-modal');
+    table.append(row);
+
+
+    showModal('Episode: ' + episode.episode + ' - ' + episode.label,  table, {
+        'Play' : function () {
+            playItem(episode.file);
+            hideModal();
+        }
+    })
+
+    // Achtergrondje maken
+    table.parent().css({
+        'background' : '#ffffff url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(episode.fanart) + '&w=675&h=400&o=15) top center',
+        'background-size' : '100%;'
     });
 }
 

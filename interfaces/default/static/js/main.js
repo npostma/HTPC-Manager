@@ -73,8 +73,10 @@ function loadRecentMovies () {
                 var itemImage = $('<img>');
                 itemImage.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&h=240&w=430');
                 itemImage.attr('alt', movie.title);
+
                 var itemTitle = $('<h4>');
                 itemTitle.html(movie.title);
+
                 var itemPlot = $('<p>');
                 itemPlot.html(shortenText(movie.plot, 100));
                 var itemCaption = $('<div>');
@@ -82,6 +84,10 @@ function loadRecentMovies () {
 
                 itemCaption.append(itemTitle);
                 itemCaption.append(itemPlot);
+                itemCaption.css('cursor', 'pointer');
+                itemCaption.click(function () {
+                    xbmcShowMovie(movie)
+                });
 
                 itemDiv.append(itemImage);
                 itemDiv.append(itemCaption);
@@ -124,6 +130,10 @@ function loadRecentTVshows () {
 
                 itemCaption.append(itemTitle);
                 itemCaption.append(itemPlot);
+                itemCaption.css('cursor', 'pointer');
+                itemCaption.click(function () {
+                    xbmcShowEpisode(episode)
+                });
 
                 itemDiv.append(itemImage);
                 itemDiv.append(itemCaption);

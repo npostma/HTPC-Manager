@@ -57,9 +57,8 @@ function hideModal() {
 }
 
 // tonen van een dailog
-function showModal(el, title, content, buttons) {
+function showModal(title, content, buttons) {
 
-    $(el).popover('hide')
     $('#modal_dialog').find('.modal-footer').html('');
     $('#modal_dialog').find('.modal-h3').html(title);
     $('#modal_dialog').find('.modal-body').html(content);

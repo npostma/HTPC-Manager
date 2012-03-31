@@ -160,12 +160,12 @@ def xbmcNotify(text):
 
 def xbmcGetRecentMovies():
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetRecentlyAddedMovies(properties=['title', 'year', 'plot', 'thumbnail', 'fanart'])
+    data = server.VideoLibrary.GetRecentlyAddedMovies(properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'])
     return dumps(data)
 
 def xbmcGetRecentShows():
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetRecentlyAddedEpisodes(properties=['episode', 'season', 'thumbnail', 'plot', 'fanart', 'title'])
+    data = server.VideoLibrary.GetRecentlyAddedEpisodes(properties=['episode', 'season', 'thumbnail', 'plot', 'fanart', 'title', 'file'])
     return dumps(data)
 
 def xbmcGetRecentAlbums():
