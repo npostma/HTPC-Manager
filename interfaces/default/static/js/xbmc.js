@@ -25,6 +25,34 @@ $(document).ready(function () {
         }
     });
 
+    // Sorting
+    $('[data-sortmethod]').click(function () {
+        $('#movie-grid').html('');
+        lastMovieLoaded = 0;
+        allMoviesLoaded = false;
+        var clickItem = $(this);
+        $('.active-sortmethod i').remove();
+        $('.active-sortmethod').removeClass('active-sortmethod');
+        clickItem.addClass('active-sortmethod').prepend($('<i>').addClass('icon-ok'));
+        loadMovies({
+            sortorder: $('.active-sortorder').attr('data-sortorder'),
+            sortmethod: $('.active-sortmethod').attr('data-sortmethod')
+        });
+    });
+    $('[data-sortorder]').click(function () {
+        $('#movie-grid').html('');
+        lastMovieLoaded = 0;
+        allMoviesLoaded = false;
+        var clickItem = $(this);
+        $('.active-sortorder i').remove();
+        $('.active-sortorder').removeClass('active-sortorder');
+        clickItem.addClass('active-sortorder').prepend($('<i>').addClass('icon-ok'));
+        loadMovies({
+            sortorder: $('.active-sortorder').attr('data-sortorder'),
+            sortmethod: $('.active-sortmethod').attr('data-sortmethod')
+        });
+    });
+
     loadNowPlaying();
 
     // Button setten

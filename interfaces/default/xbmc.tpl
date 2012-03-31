@@ -55,16 +55,18 @@
                 <div class="active tab-pane" id="movies">
                     <div class="btn-toolbar">
                         <div class="btn-group">
-                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Added <span class="caret"></span></button>
+                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Sort method <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Year</a></li>
+                                <li><a href="#" class="active-sortmethod" data-sortmethod="videotitle"><i class="icon-ok"></i>Name</a></li>
+                                <li><a href="#" data-sortmethod="date">Added</a></li>
+                                <li><a href="#" data-sortmethod="year">Year</a></li>
                             </ul>
                         </div>
                         <div class="btn-group">
-                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Ascending <span class="caret"></span></button>
+                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Sort order <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Descending</a></li>
+                                <li><a href="#" class="active-sortorder" data-sortorder="ascending"><i class="icon-ok"></i>Ascending</a></li>
+                                <li><a href="#" data-sortorder="descending">Descending</a></li>
                             </ul>
                         </div>
                     </div>

@@ -224,7 +224,7 @@ class pageHandler:
                 limitend = 0;
                 if (args.has_key('end')):
                     limitend = args.get('end')
-                return xbmcGetMovies(limitstart, limitend)
+                return xbmcGetMovies(limitstart, limitend, args.get('sortmethod'), args.get('sortorder'))
             if args.get('action') == 'thumb':
                 opacity = 100
                 if args.has_key('o'):

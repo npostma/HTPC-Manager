@@ -104,3 +104,6 @@ h6.movie-title, h6.show-title {
 #notify-user .close {
     right: 0;
 }
+.active-sortmethod i, .active-sortorder i {
+    margin-right: 5px;
+}

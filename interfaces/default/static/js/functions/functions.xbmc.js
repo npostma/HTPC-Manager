@@ -13,7 +13,9 @@ function loadMovies(options) {
     var sendData = {
         start: lastMovieLoaded,
         end: (lastMovieLoaded + 56),
-        search: ''
+        search: '',
+        sortorder: 'ascending',
+        sortmethod: 'videotitle'
     };
     $.extend(sendData, options);
 
