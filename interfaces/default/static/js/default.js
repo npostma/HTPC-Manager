@@ -33,6 +33,10 @@ $(document).ready(function () {
     // Carousel
     $('.carousel').carousel();
 
+    $('#notify-user').find('.close').click(function () {
+        $('#notify-user').hide();
+    });
+
 });
 
 // Text inkorten
@@ -115,4 +119,32 @@ function findInString(key, string) {
     } else {
         return false;
     }
+}
+
+function notify(title, text) {
+    $('#notify-user h4').html(title);
+    $('#notify-user span').html(text);
+    $('#notify-user').fadeIn(function () {
+        setTimeout(function () {
+            $('#notify-user').fadeOut();
+        }, 2000);
+    });
+}
+
+function notifyWarning(title, text) {
+    $('#notify-user').removeClass('alert-info')
+    $('#notify-user').removeClass('alert-success')
+    notify(title, text)
+}
+
+function notifyInfo(title, text) {
+    $('#notify-user').removeClass('alert-success')
+    $('#notify-user').addClass('alert-info')
+    notify(title, text)
+}
+
+function notifySuccess(title, text) {
+    $('#notify-user').removeClass('alert-info')
+    $('#notify-user').addClass('alert-success')
+    notify(title, text)
 }

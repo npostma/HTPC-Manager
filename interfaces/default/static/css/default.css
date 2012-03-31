@@ -79,7 +79,6 @@ body {
     background: none !important;
 }
 
-
 h6.movie-title, h6.show-title {
     color: #555555;
     text-align: center;
@@ -89,4 +88,19 @@ h6.movie-title, h6.show-title {
 .gif-loader {
     text-align: center;
     display: none;
+}
+
+#notify-user {
+    position: fixed;
+    width: 450px;
+    margin-left: -225px;
+    left: 50%;
+    top: 35px;
+    z-index: 3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: none;
+}
+#notify-user .close {
+    right: 0;
 }

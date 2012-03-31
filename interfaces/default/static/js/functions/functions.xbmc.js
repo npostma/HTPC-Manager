@@ -412,9 +412,9 @@ function sendNotification(text) {
     $.ajax({
         url: 'json/?which=xbmc&action=notify&text=' + text,
         type: 'get',
-        dataType: 'json',
+        dataType: 'html',
         success: function(data) {
-
+            notifyInfo('XBMC', 'Notification \'' + text + '\' sent successfully');
         }
     });
 }
@@ -425,7 +425,7 @@ function xbmcClean() {
         type: 'get',
         dataType: 'json',
         success: function(data) {
-
+            notifyInfo('XBMC', 'Library clean sent successfully');
         }
     });
 }
@@ -436,7 +436,7 @@ function xbmcScan() {
         type: 'get',
         dataType: 'json',
         success: function(data) {
-
+            notifyInfo('XBMC', 'Library update sent successfully');
         }
     });
 }

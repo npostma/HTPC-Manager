@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<div id="notify-user" class="alert alert-block">
+    <a class="close">&times;</a>
+    <h4 class="alert-heading">Warning!</h4>
+    <span>weee</span>
+</div>
+
 <div id="modal_dialog" class="modal hide">
     <div class="modal-header">
         <a href="javascript:void(0);" class="close" data-dismiss="modal">&times;</a>

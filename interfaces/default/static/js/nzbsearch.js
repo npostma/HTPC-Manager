@@ -37,7 +37,7 @@ function searchNzbs(query) {
                             nzb_url: 'http://nzbmatrix.com/nzb-download.php?id=' + item.NZBID + '&nozip=1'
                         },
                         success: function (result) {
-                            console.log(result);
+                            notifySuccess('SABnzbd', 'Added ' + item.NZBNAME + ' to the download queue')
                         }
                     });
                 });
