@@ -31,7 +31,7 @@
 
             <div id="tvshows" class="tab-pane active">
 
-                <table class="table table-striped">
+                <table class="table table-striped table-sortable">
                     <thead>
                     <tr>
                         <th>Showname</th>
@@ -39,7 +39,7 @@
                         <th>Next ep</th>
                         <th>Network</th>
                         <th>Quality</th>
-                        <th>&nbsp;</th>
+                        <th class="{sorter: false}">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody id="tvshows_table_body">
@@ -51,12 +51,13 @@
 
             <div id="nextaired" class="tab-pane">
 
-                <table class="table table-striped">
+                <table class="table table-striped table-sortable">
                     <thead>
                     <tr>
                         <th>Showname</th>
                         <th>Episode</th>
                         <th>Airdate</th>
+                        <th class="{sorter: false}">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody id="nextaired_table_body">
@@ -68,7 +69,7 @@
 
             <div id="history" class="tab-pane">
 
-                <table class="table table-striped">
+                <table class="table table-striped table-sortable">
                     <thead>
                     <tr>
                         <th>Date</th>

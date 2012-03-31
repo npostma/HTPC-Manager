@@ -48,6 +48,8 @@ function searchNzbs(query) {
 
             });
 
+            $('#results_table_body').parent().trigger('update');
+
         }
     });
 }

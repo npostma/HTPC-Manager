@@ -11,6 +11,8 @@
 
     <script src="js/jquery-1.7.1.min.js"></script>
     <script src="js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script src="js/jquery.tablesorter.min.js"></script>
+    <script src="js/jquery.metadata.js"></script>
     <script src="/js/default.js"></script>
     #if $varExists('jsfile')
     <script src="/js/$getVar('jsfile')"></script>

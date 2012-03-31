@@ -31,6 +31,8 @@ function loadShows() {
 
             });
 
+            $('#tvshows_table_body').parent().trigger('update');
+
         }
     });
 }
@@ -113,6 +115,8 @@ function loadNextAired() {
 
             });
 
+            $('#nextaired_table_body').parent().trigger('update');
+
         }
     });
 }
@@ -143,6 +147,8 @@ function loadSbHistory(limit) {
                 $('#history_table_body').append(row);
 
             });
+
+            $('#history_table_body').parent().trigger('update');
 
         }
     });

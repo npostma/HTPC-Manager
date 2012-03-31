@@ -20,14 +20,14 @@
             <button class="btn btn-success" type="submit" id="search_nzb_button"><i class="icon-search icon-white"></i> Search</button>
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-sortable">
             <thead>
             <tr>
                 <th>NZB</th>
                 <th>Category</th>
                 <th>Hits</th>
                 <th>Size</th>
-                <th>&nbsp;</th>
+                <th class="{sorter: false}">&nbsp;</th>
             </tr>
             </thead>
             <tbody id="results_table_body">

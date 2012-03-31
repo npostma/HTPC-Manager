@@ -16,7 +16,9 @@ $.each(scriptArray, function (i, scripturl) {
 
 $(document).ready(function () {
 
-	// Tabs maken
+    $(".table-sortable").tablesorter();
+
+    // Tabs maken
     $('.tabs').tab();
     $('a[data-toggle="tab"]').on('shown', function(e) {
         var current_tab = $(e.target).attr('href');
