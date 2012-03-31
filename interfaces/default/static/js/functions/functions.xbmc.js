@@ -208,16 +208,16 @@ function loadXbmcShows(options) {
 function xbmcShowEpisode(episode) {
     // Maak inhoud van modal
     var modalshowPicture = $('<img>');
-    modalshowPicture.css('height', '100px');
+    modalshowPicture.css('height', '125px');
     modalshowPicture.css('width', '200px');
-    modalshowPicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(episode.thumbnail) + '&w=200&h=100');
+    modalshowPicture.attr('src', 'json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(episode.thumbnail) + '&w=200&h=125');
 
     var modalshowAnchor = $('<div>');
     modalshowAnchor.addClass('thumbnail');
     modalshowAnchor.append(modalshowPicture);
 
     var modalshowPoster = $('<td>');
-    modalshowPoster.css('height', '100px');
+    modalshowPoster.css('height', '125px');
     modalshowPoster.css('width', '200px');
     modalshowPoster.append(modalshowAnchor);
 
