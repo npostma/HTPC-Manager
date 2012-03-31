@@ -107,3 +107,8 @@ h6.movie-title, h6.show-title {
 .active-sortmethod i, .active-sortorder i {
     margin-right: 5px;
 }
+
+.modal {
+    width: 700px;
+    margin-left: -350px;
+}

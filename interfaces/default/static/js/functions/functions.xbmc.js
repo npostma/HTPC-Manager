@@ -95,7 +95,7 @@ function loadMovies(options) {
 
                     // Achtergrondje maken
                     table.parent().css({
-                        'background' : '#ffffff url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=600&h=400&o=15) top center',
+                        'background' : '#ffffff url(json/?which=xbmc&action=thumb&thumb=' + encodeURIComponent(movie.fanart) + '&w=675&h=400&o=15) top center',
                         'background-size' : '100%;'
                     });
                 });
