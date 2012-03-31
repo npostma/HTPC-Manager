@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
 
+    loadNowPlaying();
     loadMovies();
     loadXbmcShows();
     $(window).scroll(function() {
@@ -55,8 +56,6 @@ $(document).ready(function () {
             sortmethod: $('.active-sortmethod').attr('data-sortmethod')
         });
     });
-
-    loadNowPlaying();
 
     // Button setten
     $('#back-to-shows').click(function () {
