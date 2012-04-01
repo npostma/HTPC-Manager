@@ -46,6 +46,7 @@ function loadMovies(options) {
             }
 
             $.each(data.movies, function (i, movie) {
+                console.log(movie);
 
                 var moviePicture = $('<img>');
                 moviePicture.css('height', '150px');
