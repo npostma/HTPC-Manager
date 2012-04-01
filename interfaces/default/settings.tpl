@@ -270,6 +270,22 @@
                             </div>
                         </fieldset>
 
+                        <fieldset>
+                            <legend>Options</legend>
+                            <div class="control-group">
+                                <label class="control-label">Sorting ignore articles (When possible)</label>
+                                <div class="controls">
+                                    <label class="checkbox">
+                                        #if $getVar('sort_ignore_articles', 'no') == "yes"
+                                        <input type="checkbox" checked="checked" value="yes" name="sort_ignore_articles" />
+                                        #else
+                                        <input type="checkbox" value="yes" name="sort_ignore_articles" />
+                                        #end if
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
                         <div class="form-actions">
                             <input class="btn btn-primary" type="submit" value="Save changes" />
                             <input class="btn" type="reset" value="Clear" />

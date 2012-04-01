@@ -80,13 +80,21 @@ def xbmcMakeUrl():
         return url
 
 def xbmcGetMovies(limitstart=0,limitend=0,sortmethod='videotitle',sortorder='ascending'):
+    ignorearticle = False
+    config = readSettings()
+    if config.has_key('sort_ignore_articles') and config.get('sort_ignore_articles') == 'yes':
+        ignorearticle = True
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetMovies(sort={'order': sortorder, 'method' : sortmethod, 'ignorearticle' : bool(1)}, properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'], limits={'start' : int(limitstart), 'end' : int(limitend)})
+    data = server.VideoLibrary.GetMovies(sort={'order': sortorder, 'method' : sortmethod, 'ignorearticle' : ignorearticle}, properties=['title', 'year', 'plot', 'thumbnail', 'file', 'fanart', 'studio', 'trailer'], limits={'start' : int(limitstart), 'end' : int(limitend)})
     return dumps(data)
 
-def xbmcGetShows(limitstart=0,limitend=0):
+def xbmcGetShows(limitstart=0,limitend=0,sortmethod='videotitle',sortorder='ascending'):
+    ignorearticle = bool(0)
+    config = readSettings()
+    if config.has_key('sort_ignore_articles') and config.get('sort_ignore_articles') == 'yes':
+        ignorearticle = bool(1)
     server = Server(xbmcMakeUrl() + '/jsonrpc')
-    data = server.VideoLibrary.GetTVShows(properties=['title', 'year', 'plot', 'thumbnail'], limits={'start' : int(limitstart), 'end' : int(limitend)})
+    data = server.VideoLibrary.GetTVShows(sort={'order': sortorder, 'method' : sortmethod, 'ignorearticle' : ignorearticle}, properties=['title', 'year', 'plot', 'thumbnail'], limits={'start' : int(limitstart), 'end' : int(limitend)})
     return dumps(data)
 
 def xbmcGetShow(id):

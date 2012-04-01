@@ -67,6 +67,8 @@ class pageHandler:
                     kwargs['use_nzbmatrix'] = 'no'
                 if not kwargs.has_key('xbmc_show_banners'):
                     kwargs['xbmc_show_banners'] = 'no'
+                if not kwargs.has_key('sort_ignore_articles'):
+                    kwargs['sort_ignore_articles'] = 'no'
                 htpc.settings.saveSettings(kwargs)
 
             if kwargs.has_key('regenerate_thumbs'):
