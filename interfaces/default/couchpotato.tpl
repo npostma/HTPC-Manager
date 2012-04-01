@@ -12,13 +12,27 @@
 
         <div id="notification_area"></div>
 
+        <div class="well form-inline">
+            <input class="span6" id="search_movie_name" name="search_movie_name" type="text" />
+            <button class="btn btn-success" type="button" id="search_movie_button"><i class="icon-search icon-white"></i> Search movie</button>
+        </div>
 
-        <table class="table table-striped">
-            <tbody id="movies_table_body">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#wanted" data-toggle="tab">Wanted</a></li>
 
-            </tbody>
-        </table>
+        </ul>
 
+        <div class="tab-content">
+
+            <div id="wanted" class="tab-pane active">
+
+                <table class="table table-striped">
+                    <tbody id="movies_table_body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

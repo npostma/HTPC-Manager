@@ -213,8 +213,12 @@ class pageHandler:
                 return sbGetShow(args.get('tvdbid'))
 
         if args.get('which') == 'couchpotato':
-            if args.get('action') == 'movielist':
+            if args.get('action') == 'movie.list':
                 return cpGetMovieList()
+            if args.get('action') == 'movie.delete':
+                return cpDeleteMovie(args.get('id'))
+            if args.get('action') == 'movie.search':
+                return cpSearchMovie(args.get('q'))
 
         if args.get('which') == 'xbmc':
             if args.get('action') == 'movies':

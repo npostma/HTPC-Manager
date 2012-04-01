@@ -20,3 +20,11 @@ def cpMakeUrl(command):
 def cpGetMovieList():
     data = cpFetchDataFromUrl(cpMakeUrl('movie.list'))
     return data
+
+def cpDeleteMovie(id):
+    data = cpFetchDataFromUrl(cpMakeUrl('movie.delete/?id=' + id))
+    return data;
+
+def cpSearchMovie(q):
+    data = cpFetchDataFromUrl(cpMakeUrl('movie.search/?q=' + q))
+    return data;
