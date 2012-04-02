@@ -8,8 +8,17 @@ import base64
 import cherrypy
 import os
 import htpc
-from PIL import Image
-from PIL import ImageEnhance
+import sys
+
+is_64bits = sys.maxsize > 2**32
+
+if is_64bits:
+    from PIL64 import Image
+    from PIL64 import ImageEnhance
+else:
+    from PIL import Image
+    from PIL import ImageEnhance
+
 
 def xbmcFetchDataFromUrl(url):
     try:
