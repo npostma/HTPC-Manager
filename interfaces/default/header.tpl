@@ -99,6 +99,25 @@
                         </li>
                     #end if
                 </ul>
+
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            System
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a id="btn-restart" href="javascript:;">Restart</a>
+                            </li>
+                            <li>
+                                <a id="btn-shutdown" href="javascript:;">Shutdown</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="nav pull-right">
                     #if $submenu == "settings"
                     <li class="active">

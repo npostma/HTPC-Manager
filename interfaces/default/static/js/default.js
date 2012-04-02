@@ -39,6 +39,31 @@ $(document).ready(function () {
         $('#notify-user').hide();
     });
 
+    $('#btn-shutdown').click(function () {
+        if (confirm('Are you sure?')) {
+            $.ajax({
+                url: 'json/?which=system&action=shutdown',
+                type: 'get',
+                dataType: 'json',
+                beforeSend: function() {
+                    notifySuccess('Shutdown command sent.')
+                }
+            });
+        }
+    });
+    $('#btn-restart').click(function () {
+        if (confirm('Are you sure?')) {
+            $.ajax({
+                url: 'json/?which=system&action=restart',
+                type: 'get',
+                dataType: 'json',
+                beforeSend: function() {
+                    notifySuccess('Restart command sent.')
+                }
+            });
+        }
+    });
+
 });
 
 // Text inkorten

@@ -274,7 +274,19 @@ class pageHandler:
         if args.get('which') == 'nzbsearch':
             if args.has_key('query'):
                 return searchNZBs(args.get('query'))
-                
+
+        if args.get('which') == 'system':
+            if  args.get('action') == 'shutdown':
+                cherrypy.engine.exit()
+                sys.exit(0)
+            if  args.get('action') == 'restart':
+                args = sys.argv[:]
+                args.insert(0, sys.executable)
+                if sys.platform == 'win32':
+                    args = ['"%s"' % arg for arg in args]
+                os.chdir(os.getcwd())
+                os.execv(sys.executable, args)
+
     @cherrypy.expose()    
     def update(self):
         cherrypy.engine.exit()
