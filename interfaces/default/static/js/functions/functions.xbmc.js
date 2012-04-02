@@ -364,7 +364,7 @@ function loadNowPlaying() {
         dataType: 'json',
         complete: function() {
             setTimeout(function () {
-               // loadNowPlaying();
+                loadNowPlaying();
             }, 150);
         },
         success: function(data) {
