@@ -141,3 +141,7 @@ table .headerSortUp:after {
     border-top: 4px solid #000000;
     visibility: visible;
 }
+
+.popover-inner {
+    width: 550px;
+}

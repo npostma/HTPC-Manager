@@ -3,6 +3,8 @@ var lastMovieLoaded = 0;
 var allMoviesLoaded = false;
 var moviesLoading = false;
 var movieRequest = null;
+var movieLimit = 800;
+
 function loadMovies(options) {
 
     if (movieRequest != null) {
@@ -12,7 +14,7 @@ function loadMovies(options) {
 
     var sendData = {
         start: lastMovieLoaded,
-        end: (lastMovieLoaded + 56),
+        end: (lastMovieLoaded + movieLimit),
         search: '',
         sortorder: 'ascending',
         sortmethod: 'videotitle'
@@ -37,7 +39,7 @@ function loadMovies(options) {
         dataType: 'json',
         success: function (data) {
 
-            lastMovieLoaded += 56;
+            lastMovieLoaded += movieLimit;
 
             if (data == null) return false;
 
@@ -46,8 +48,6 @@ function loadMovies(options) {
             }
 
             $.each(data.movies, function (i, movie) {
-                console.log(movie);
-
                 var moviePicture = $('<img>');
                 moviePicture.css('height', '150px');
                 moviePicture.css('width', '100px');
@@ -364,7 +364,7 @@ function loadNowPlaying() {
         dataType: 'json',
         complete: function() {
             setTimeout(function () {
-                loadNowPlaying();
+               // loadNowPlaying();
             }, 150);
         },
         success: function(data) {

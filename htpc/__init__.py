@@ -217,10 +217,16 @@ class pageHandler:
         if args.get('which') == 'couchpotato':
             if args.get('action') == 'movie.list':
                 return cpGetMovieList()
+            if args.get('action') == 'notification.list':
+                return cpGetNotificationList()
             if args.get('action') == 'movie.delete':
                 return cpDeleteMovie(args.get('id'))
+            if args.get('action') == 'movie.refresh':
+                return cpRefreshMovie(args.get('id'))
             if args.get('action') == 'movie.search':
                 return cpSearchMovie(args.get('q'))
+            if args.get('action') == 'movie.add':
+                return cpAddMovie(args.get('profile_id'), args.get('identifier'), args.get('title'))
 
         if args.get('which') == 'xbmc':
             if args.get('action') == 'movies':
