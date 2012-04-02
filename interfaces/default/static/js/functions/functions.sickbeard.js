@@ -72,7 +72,7 @@ function loadShow(tvdbid) {
             row.append('<th>Network</th><td>' + data.network + '</td>');
             table.append(row);
 
-            showModal(this, data.show_name, table, {});
+            showModal(data.show_name, table, {});
         }
     });
 }
