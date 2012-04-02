@@ -96,7 +96,11 @@ function loadNextAired() {
                 return false;
             }
 
-            $.each(result.data.soon, function (i, tvshow) {
+            var soonaired = result.data.soon;
+            var todayaired = result.data.today;
+            var nextaired = todayaired.concat(soonaired);
+
+            $.each(nextaired, function (i, tvshow) {
 
                 var infoIcon = $('<i>');
                 infoIcon.addClass('icon-info-sign');
