@@ -280,12 +280,13 @@ class pageHandler:
                 cherrypy.engine.exit()
                 sys.exit(0)
             if  args.get('action') == 'restart':
-                args = sys.argv[:]
-                args.insert(0, sys.executable)
+                cherrypy.engine.exit()
+                arguments = sys.argv[:]
+                arguments.insert(0, sys.executable)
                 if sys.platform == 'win32':
-                    args = ['"%s"' % arg for arg in args]
+                    arguments = ['"%s"' % arg for arg in arguments]
                 os.chdir(os.getcwd())
-                os.execv(sys.executable, args)
+                os.execv(sys.executable, arguments)
 
     @cherrypy.expose()    
     def update(self):
