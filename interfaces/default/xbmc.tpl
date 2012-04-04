@@ -58,8 +58,7 @@
                             <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Sort method <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="#" class="active-sortmethod" data-sortmethod="videotitle"><i class="icon-ok"></i>Name</a></li>
-                                <li><a href="#" data-sortmethod="date">Added</a></li>
-                                <li><a href="#" data-sortmethod="year">Year</a></li>
+                                <li><a href="#" data-sortmethod="lastplayed">Last played</a></li>
                             </ul>
                         </div>
                         <div class="btn-group">
