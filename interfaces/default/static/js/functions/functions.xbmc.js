@@ -232,7 +232,7 @@ function xbmcShowEpisode(episode) {
     modalshowPoster.append(modalshowAnchor);
 
     var modalPlot = $('<td>');
-    modalPlot.html(episode.plot );
+    modalPlot.html(episode.plot);
 
     var row = $('<tr>');
     row.append(modalshowPoster);
@@ -243,7 +243,7 @@ function xbmcShowEpisode(episode) {
     table.append(row);
 
 
-    showModal('Episode: ' + episode.episode + ' - ' + episode.label,  table, {
+    showModal(episode.label,  table, {
         'Play' : function () {
             playItem(episode.file);
             hideModal();
@@ -319,7 +319,7 @@ function loadXBMCShow(show) {
                     });
 
                     row.append($('<td>').html(episodeThumb).width(100));
-                    row.append($('<td>').html('<h5>Episode: ' + episode.episode + ' - ' + episode.label + '</h5>' + '<p>' + episode.plot + '</p>'));
+                    row.append($('<td>').html('<h5>' + episode.label + '</h5>' + '<p>' + episode.plot + '</p>'));
                     row.append($('<td>').append(playButton));
                     episodesTable.append(row);
                 });
@@ -419,9 +419,12 @@ function loadNowPlaying() {
                     'background-position' : '50% 20%',
                     'margin-bottom' : '10px'
                 });
+
+                // Line
+                $('<hr />').insertAfter('#nowplaying');
             }
 
-            // Play knop
+            // Play button
             var playPauseButton = $('[data-player-control=PlayPause]');
             var playPauseIcon = playPauseButton.find('i');
             playPauseIcon.removeClass();
@@ -431,7 +434,7 @@ function loadNowPlaying() {
                 playPauseIcon.addClass('icon-play');
             }
 
-            // Mute knop
+            // Mute button
             var setMuteButton = $('[data-player-control=SetMute]')
             var setMuteIcon = setMuteButton.find('i');
             setMuteIcon.removeClass();

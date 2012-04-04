@@ -7,21 +7,28 @@ $(document).ready(function () {
     loadWantedMovies();
     loadRecentAlbums();
     loadInfo();
+    setInterval(function() {
+        loadInfo();
+    }, 5000);
 });
 
 function loadInfo() {
 
     /**
-     * DISK Info
+     * Info
      */
     $.ajax({
         url: '/json/?which=sabnzbd&action=status',
         type: 'get',
         dataType: 'json',
         success: function (object, textStatus) {
-            var data = object.queue;
 
+            $('#download-info, #hdd-info').children().remove();
+            var data = object.queue;
             var i = 1;
+            /**
+             * Disk info
+             */
             while (true) {
 
                 var disk = eval('data.diskspace' + i);
@@ -32,9 +39,9 @@ function loadInfo() {
                     var diskspace = 100 - (disk / (disk_total / 100));
 
                     var title = $('<h5>').html('HDD' + i);
-                    var subTitle = $('<small>').html(' - ' + Math.round(diskspace) + '% used, ' + disk + ' G / ' + disk_total + ' G free');
-                    title.append(subTitle);
+                    var subTitle = $('<h6>').html(Math.round(diskspace) + '%, ' + disk + ' GB / ' + disk_total + ' GB');
                     $('#hdd-info').append(title);
+                    $('#hdd-info').append(subTitle);
 
                     var progress = $('<div>').addClass('progress');
                     var progressBar = $('<div>').addClass('bar').width(diskspace + '%');
@@ -47,13 +54,25 @@ function loadInfo() {
                     break;
                 }
             }
+            /**
+             * Download info
+             */
+
+            if (data.slots.length > 0) {
+                var percentage = 100 - (data.mbleft / (data.mb / 100));
+                var title = $('<h5>').html('Now downloading');
+                var subTitle = $('<h6>').html(Math.round(percentage) + '%, ' + data.timeleft + ' / ' + data.mb + 'MB');
+                $('#download-info').append(title);
+                $('#download-info').append(subTitle);
+
+                var progress = $('<div>').addClass('progress');
+                var progressBar = $('<div>').addClass('bar').width(percentage + '%');
+                progress.append(progressBar);
+
+                $('#download-info').append(progress);
+            }
         }
     });
-
-    /**
-     * Now Playing Info
-     */
-
 }
 
 function loadRecentMovies () {

@@ -47,7 +47,7 @@
             <div class="span4">
                 <h3>Recently added Movies</h3>
 
-                <div id="movie-carousel" class="carousel hide">
+                <div id="movie-carousel" class="carousel hide  carousel-fanart" style="height:240px;">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
 
@@ -62,7 +62,7 @@
             <div class="span4">
                 <h3>Recently added TV Shows</h3>
 
-                <div id="tvshow-carousel" class="carousel hide">
+                <div id="tvshow-carousel" class="carousel hide carousel-fanart">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
 
@@ -137,6 +137,7 @@
             <div class="span4">
                 <h3>Info</h3>
                 <div id="hdd-info"></div>
+                <div id="download-info"></div>
             </div>
             #end if
 
