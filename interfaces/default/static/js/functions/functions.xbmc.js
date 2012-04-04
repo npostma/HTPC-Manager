@@ -9,7 +9,7 @@ var movieLimit = 99999;
 function loadMovies(options) {
 
     if ($('#movie-grid').attr('data-scroll-limit') !== 0) {
-        movieLimit = $('#movie-grid').attr('data-scroll-limit');
+        movieLimit = parseInt($('#movie-grid').attr('data-scroll-limit'));
     }
 
     if (movieRequest != null) {
@@ -133,7 +133,7 @@ var showRequest = null;
 function loadXbmcShows(options) {
 
     if ($('#movie-grid').attr('data-scroll-limit') !== 0) {
-        showSteps = $('#movie-grid').attr('data-scroll-limit');
+        showSteps = parseInt($('#movie-grid').attr('data-scroll-limit'));
     }
 
     if (showRequest != null) {
