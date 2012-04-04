@@ -92,6 +92,8 @@ function getMovieList() {
 
 function deleteMovie(id, name) {
 
+    $('.tooltip').remove();
+
     $.ajax({
         url: '/json/?which=couchpotato&action=movie.delete',
         data: {
@@ -127,6 +129,8 @@ function refreshMovie(id, name) {
 
 function searchMovie(q) {
 
+    $('.tooltip').remove();
+
     $.ajax({
         url: '/json/?which=couchpotato&action=movie.search',
         data: {
@@ -154,6 +158,7 @@ function searchMovie(q) {
                 movieThumb.css('width', '75px');
 
                 var row = $('<tr>');
+                row.attr('data-imdb', item.imdb);
                 row.append($('<td>').append(movieThumb));
 
                 var movieHtml = '<h3>' + item.original_title + ' <small>' + item.year + '</small></h3>';
@@ -166,6 +171,8 @@ function searchMovie(q) {
                 });
                 row.append($('<td>').append(addIcon));
                 $('#search-movie-list').append(row);
+
+                var close = $('<span>&times;test</span>');
             });
         }
     });
@@ -173,8 +180,12 @@ function searchMovie(q) {
 
 function addMovie(profile, id, title) {
 
-    $('#movie-loader').show();
-    $('#search-movie-list').children().remove();
+    $('.tooltip').remove();
+
+    var loader = $('#movie-loader').show();
+    $('[data-imdb=' + id + ']').children().remove();
+    var row = $('<td>').attr('colspan', 3).append(loader);
+    $('[data-imdb=' + id + ']').append(row);
 
     $.ajax({
         url: '/json/?which=couchpotato&action=movie.add',
@@ -187,9 +198,9 @@ function addMovie(profile, id, title) {
         dataType: 'json',
         success: function (result) {
 
-            $('#search_movie_name').popover('hide');
             notifyInfo('CouchPotato', title + ' successfully added!');
             getMovieList();
+            $('[data-imdb=' + id + ']').fadeOut();
         }
     });
 }
