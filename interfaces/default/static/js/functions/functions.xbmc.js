@@ -1,11 +1,16 @@
 // films inladen
+
 var lastMovieLoaded = 0;
 var allMoviesLoaded = false;
 var moviesLoading = false;
 var movieRequest = null;
-var movieLimit = 800;
+var movieLimit = 99999;
 
 function loadMovies(options) {
+
+    if ($('#movie-grid').attr('data-scroll-limit') !== 0) {
+        movieLimit = $('#movie-grid').attr('data-scroll-limit');
+    }
 
     if (movieRequest != null) {
         movieRequest.abort();
@@ -120,12 +125,16 @@ function xbmcShowMovie(movie) {
 }
 
 // shows inladen
-var showSteps = 56;
+var showSteps = 99999;
 var lastShowLoaded = 0;
 var allShowsLoaded = false;
 var showsLoading = false;
 var showRequest = null;
 function loadXbmcShows(options) {
+
+    if ($('#movie-grid').attr('data-scroll-limit') !== 0) {
+        showSteps = $('#movie-grid').attr('data-scroll-limit');
+    }
 
     if (showRequest != null) {
         showRequest.abort();
@@ -449,7 +458,6 @@ function loadNowPlaying() {
 
             var progressBar = $('#player-progressbar').find('.bar');
             progressBar.css('width', data.playerInfo.percentage + '%');
-            progressBar.tooltip({'title' : Math.round(data.playerInfo.percentage) + '%'});
 
             $('[data-player-control]').attr('disabled', false);
         }
@@ -504,5 +512,25 @@ function filterMovies(key) {
         if (!findInString(key, $(item).html())) {
             $(item).parent().hide();
         }
+    });
+}
+
+function enablePlayerControls() {
+    $('[data-player-control]').click(function () {
+
+        var clickItem = $(this);
+        var playerDo = clickItem.attr('data-player-control');
+
+        // Laadscherm
+        clickItem.attr('disabled', true);
+
+        $.ajax({
+            url: 'json/?which=xbmc&action=controlplayer&do=' + playerDo,
+            type: 'get',
+            dataType: 'json',
+            success: function(data) {
+                if (data == null) return;
+            }
+        });
     });
 }

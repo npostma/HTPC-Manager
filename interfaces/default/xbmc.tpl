@@ -70,16 +70,16 @@
                             </ul>
                         </div>
                     </div>
-                    <ul id="movie-grid" class="thumbnails"></ul>
+                    <ul id="movie-grid" class="thumbnails" data-scroll-limit="$getVar('xbmc_scroll_limit', '0')"></ul>
                     <div class="gif-loader" id="movie-loader"><img src="img/loader.gif" alt="loader" /></div>
                 </div>
 
 
                 <div id="shows" class="tab-pane">
                     #if $getVar('xbmc_show_banners', 'no') == "yes"
-                    <ul id="show-grid" class="thumbnails banners"></ul>
+                    <ul id="show-grid" class="thumbnails banners" data-scroll-limit="$getVar('xbmc_scroll_limit', '0')"></ul>
                     #else
-                    <ul id="show-grid" class="thumbnails"></ul>
+                    <ul id="show-grid" class="thumbnails" data-scroll-limit="$getVar('xbmc_scroll_limit', '0')"></ul>
                     #end if
                     <div class="gif-loader" id="show-loader"><img src="img/loader.gif" alt="loader" /></div>
                     <div id="show-details" style="display:none;">

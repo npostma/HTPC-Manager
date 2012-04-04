@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    enablePlayerControls();
+    loadNowPlaying();
     loadRecentMovies();
     loadRecentTVshows();
     loadNextAired();
@@ -111,7 +113,7 @@ function loadRecentTVshows () {
             }
             $.each(data.episodes, function (i, episode) {
 
-                var epTitle = episode.season + 'x' + episode.episode + ' ' + episode.label;
+                var epTitle = episode.label;
 
                 var itemDiv = $('<div>');
                 itemDiv.addClass('item');

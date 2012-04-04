@@ -284,6 +284,13 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label class="control-label" for="xbmc_scroll_limit">XBMC scroll limit</label>
+                                <div class="controls">
+                                    <input class="span1" id="xbmc_scroll_limit" name="xbmc_scroll_limit" type="text" value="$getVar('xbmc_scroll_limit', '0')" />
+                                    <span class="help-inline">To show all enter '0'</span>
+                                </div>
+                            </div>
                         </fieldset>
 
                         <div class="form-actions">
