@@ -3,7 +3,9 @@ $(document).ready(function () {
     loadNowPlaying();
     loadRecentMovies();
     loadRecentTVshows();
-    loadNextAired();
+    loadNextAired({
+        limit: 5
+    });
     loadWantedMovies();
     loadRecentAlbums();
     loadInfo();

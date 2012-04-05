@@ -64,6 +64,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#modal_dialog').on('hidden', function () {
+        $('#modal_dialog .modal-body').css({
+            background : '#ffffff'
+        });
+    })
+
 });
 
 // Text inkorten

@@ -77,7 +77,14 @@ function loadShow(tvdbid) {
     });
 }
 
-function loadNextAired() {
+function loadNextAired(options) {
+
+    var defaults = {
+       limit : 0
+    };
+
+    $.extend(defaults, options);
+
     $.ajax({
         url: '/json/?which=sickbeard&action=nextaired',
         type: 'get',
@@ -101,6 +108,10 @@ function loadNextAired() {
             var nextaired = todayaired.concat(soonaired);
 
             $.each(nextaired, function (i, tvshow) {
+
+                if (defaults.limit != 0 && i == defaults.limit) {
+                    return false;
+                }
 
                 var infoIcon = $('<i>');
                 infoIcon.addClass('icon-info-sign');
