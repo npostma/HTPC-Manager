@@ -87,4 +87,4 @@ class reader:
             retval[spaceType.FREE_FOR_USER] = (status[statvfs.F_BAVAIL] * status[statvfs.F_FRSIZE])
             retval[spaceType.TOTAL_DISK_SPACE]  = (status[statvfs.F_BLOCKS] * status[statvfs.F_FRSIZE])
             retval[spaceType.TOTAL_FREE] = (status[statvfs.F_BFREE] * status[statvfs.F_FRSIZE])
-        return dumps(retval)
+        return retval

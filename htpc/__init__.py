@@ -11,6 +11,7 @@ from htpc.sickbeard import *
 from htpc.couchpotato import *
 from htpc.xbmc import *
 from htpc.nzbsearch import *
+from filemanager.reader import *
 
 # Standaard variabelen
 host = "0.0.0.0"
@@ -287,6 +288,9 @@ class pageHandler:
                     arguments = ['"%s"' % arg for arg in arguments]
                 os.chdir(os.getcwd())
                 os.execv(sys.executable, arguments)
+            if args.get('action') == 'diskspace':
+                r = reader()
+                return r.getDriveInfo()
 
     @cherrypy.expose()    
     def update(self):

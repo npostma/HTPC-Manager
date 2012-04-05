@@ -8,71 +8,36 @@ $(document).ready(function () {
     });
     loadWantedMovies();
     loadRecentAlbums();
-    loadInfo();
-    setInterval(function() {
-        loadInfo();
-    }, 5000);
+    loadDiskSpace();
 });
 
-function loadInfo() {
-
-    /**
-     * Info
-     */
+function loadDiskSpace() {
     $.ajax({
-        url: '/json/?which=sabnzbd&action=status',
+        url: 'json/?which=system&action=diskspace',
         type: 'get',
         dataType: 'json',
-        success: function (object, textStatus) {
+        success: function (data) {
+            $.each(data, function (disk, info) {
 
-            $('#download-info, #hdd-info').children().remove();
-            var data = object.queue;
-            var i = 1;
-            /**
-             * Disk info
-             */
-            while (true) {
-
-                var disk = eval('data.diskspace' + i);
-                var disk_total = eval('data.diskspacetotal' + i);
-
-                if (disk != undefined && disk_total != undefined) {
-
-                    var diskspace = 100 - (disk / (disk_total / 100));
-
-                    var title = $('<h5>').html('HDD' + i);
-                    var subTitle = $('<h6>').html(Math.round(diskspace) + '%, ' + disk + ' GB / ' + disk_total + ' GB');
-                    $('#hdd-info').append(title);
-                    $('#hdd-info').append(subTitle);
-
-                    var progress = $('<div>').addClass('progress');
-                    var progressBar = $('<div>').addClass('bar').width(diskspace + '%');
-                    progress.append(progressBar);
-
-                    $('#hdd-info').append(progress);
-
-                    i++;
-                } else {
-                    break;
+                var bytesUsed = (info.TOTAL_DISK_SPACE - info.TOTAL_FREE);
+                var percentageUsed = (bytesUsed / ((info.TOTAL_DISK_SPACE) / 100));
+                if (isNaN(percentageUsed)) {
+                    return true;
                 }
-            }
-            /**
-             * Download info
-             */
+                console.log(percentageUsed);
 
-            if (data.slots.length > 0) {
-                var percentage = 100 - (data.mbleft / (data.mb / 100));
-                var title = $('<h5>').html('Now downloading');
-                var subTitle = $('<h6>').html(Math.round(percentage) + '%, ' + data.timeleft + ' / ' + data.mb + 'MB');
-                $('#download-info').append(title);
-                $('#download-info').append(subTitle);
+                var title = $('<h5>').html(disk);
+                $('#hdd-info').append(title);
+                var subTitle = $('<h6>').html(Math.round(percentageUsed) + '%, ' + bytesToSize(bytesUsed, 2) + ' GB / ' + bytesToSize(info.TOTAL_DISK_SPACE, 2) + ' GB');
+                $('#hdd-info').append(subTitle);
 
                 var progress = $('<div>').addClass('progress');
-                var progressBar = $('<div>').addClass('bar').width(percentage + '%');
+                var progressBar = $('<div>').addClass('bar').width(Math.round(percentageUsed) + '%');
                 progress.append(progressBar);
 
-                $('#download-info').append(progress);
-            }
+                $('#hdd-info').append(progress);
+
+            });
         }
     });
 }
