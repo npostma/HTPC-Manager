@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    loadDiskSpace();
     enablePlayerControls();
     loadNowPlaying();
     loadRecentMovies();
@@ -8,7 +9,6 @@ $(document).ready(function () {
     });
     loadWantedMovies();
     loadRecentAlbums();
-    loadDiskSpace();
 });
 
 function loadDiskSpace() {
@@ -24,11 +24,9 @@ function loadDiskSpace() {
                 if (isNaN(percentageUsed)) {
                     return true;
                 }
-                console.log(percentageUsed);
-
-                var title = $('<h5>').html(disk);
+                var title = $('<h5>').html(disk + ':');
                 $('#hdd-info').append(title);
-                var subTitle = $('<h6>').html(Math.round(percentageUsed) + '%, ' + bytesToSize(bytesUsed, 2) + ' GB / ' + bytesToSize(info.TOTAL_DISK_SPACE, 2) + ' GB');
+                var subTitle = $('<h6>').html(Math.round(percentageUsed) + '%, ' + bytesToSize(bytesUsed, 2) + '  / ' + bytesToSize(info.TOTAL_DISK_SPACE, 2));
                 $('#hdd-info').append(subTitle);
 
                 var progress = $('<div>').addClass('progress');
